@@ -14,12 +14,15 @@ export default class BusinessManager extends Component {
         <ul>
           {this.props.businesses.map(business =>
             <Business
+              key={business.id}
               name={business.name}
+              amount={business.amount}
+              incrementStock={() => this.props.incrementStock(business.id, 1)}
               {...business}
             />
           )}
         </ul>
-        <button onClick={(e) => this.props.addBusiness()}>
+        <button onClick={(e) => this.props.addBusiness('test')}>
           Add
         </button>
       </div>
@@ -28,9 +31,11 @@ export default class BusinessManager extends Component {
 }
 
 BusinessManager.propTypes = {
+  incrementStock: PropTypes.func.isRequired,
   addBusiness: PropTypes.func.isRequired,
   businesses: PropTypes.arrayOf(PropTypes.shape({
-    name: PropTypes.string.isRequired
+    name: PropTypes.string.isRequired,
+    amount: PropTypes.number.isRequired
   }).isRequired).isRequired
 }
 
