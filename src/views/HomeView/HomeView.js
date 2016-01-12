@@ -22,7 +22,10 @@ export class HomeView extends React.Component {
   render () {
     return (
       <div className='container text-center'>
-        <h1>Welcome to the React Redux Starter Kit</h1>
+        <div className='jumbotron'>
+          <h1>Welcome to Lemons </h1>
+          <img src='lemon.png' style={{width: '100px', height: '100px'}}></img>
+        </div>
         <h2>
           Sample Counter:&nbsp;
           <span className={classes['counter--green']}>{this.props.counter}</span>
