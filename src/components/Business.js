@@ -1,10 +1,10 @@
 import React, { PropTypes } from 'react'
 import { connect } from 'react-redux'
 // import increaseStock from '../redux/modules/business'
-import { actions as businessActions } from '../redux/modules/business'
+import { actions as businessActions } from 'redux/modules/business'
 
 const mapStateToProps = (state) => ({
-  counter: state.business.counter
+  counter: state.counter
 })
 class Business extends React.Component {
   static propTypes = {

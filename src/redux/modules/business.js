@@ -31,11 +31,11 @@ export const actions = {
 // ------------------------------------
 // Reducer
 // ------------------------------------
-// export default handleActions({
-//   [STOCK_INCREMENT]: (state, { payload }) => state + payload
-// }, 1)
 export default handleActions({
-  STOCK_INCREMENT: (state, action) => ({
-    counter: state.counter + action.payload
-  })
-}, {counter: 0})
+  [STOCK_INCREMENT]: (state, { payload }) => state + payload
+}, 1)
+// export default handleActions({
+//   STOCK_INCREMENT: (state, action) => ({
+//     counter: state.counter + action.payload
+//   })
+// }, {counter: 0})
