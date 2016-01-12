@@ -12,7 +12,7 @@ export default (config) => {
   // http://stackoverflow.com/questions/34133808/webpack-ots-parsing-error-loading-fonts/34133809#34133809
   if (HMR_ENABLED) {
     overrides.compiler_public_path = (
-      `http://${config.server_host}:${config.server_port}/`
+      `http://${config.webpack_server_host}:${config.server_port}/`
     )
   }
 

@@ -19,8 +19,10 @@ const config = {
   // ----------------------------------
   // Server Configuration
   // ----------------------------------
-  server_host : 'localhost',
+  server_host : process.env.IP || 'localhost',
   server_port : process.env.PORT || 3000,
+
+  webpack_server_host : process.env.WEBPACK_HOST || process.env.IP || 'localhost',
 
   // ----------------------------------
   // Compiler Configuration

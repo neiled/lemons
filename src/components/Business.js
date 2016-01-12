@@ -14,14 +14,14 @@ class Business extends React.Component {
   };
   render () {
     return (
-    <div>
+    <li>
       <p>{this.props.name}</p>
       <p>{this.props.counter}</p>
       <button className='btn btn-default'
               onClick={() => this.props.incrementStock(1)}>
         Buy Stock
       </button>
-    </div>
+    </li>
     )
   }
 }
