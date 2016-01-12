@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router'
 import { actions as counterActions } from '../../redux/modules/counter'
 import classes from './HomeView.scss'
+import Business from '../../components/Business'
 
 // We define mapStateToProps where we'd normally use
 // the @connect decorator so the data requirements are clear upfront, but then
@@ -39,6 +40,7 @@ export class HomeView extends React.Component {
           Double (Async)
         </button>
         <hr />
+        <Business name='Lemon Stand'/>
         <Link to='/404'>Go to 404 Page</Link>
       </div>
     )
