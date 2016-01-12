@@ -9,6 +9,7 @@ const mapStateToProps = (state) => ({
 })
 export default class BusinessManager extends Component {
     render () {
+      const {dispatch} = this.props
       return (
       <div>
         <ul>
@@ -17,12 +18,12 @@ export default class BusinessManager extends Component {
               key={business.id}
               name={business.name}
               amount={business.amount}
-              incrementStock={() => this.props.incrementStock(business.id, 1)}
+              incrementStock={() => dispatch(businessActions.incrementStock(business.id, 1))}
               {...business}
             />
           )}
         </ul>
-        <button onClick={(e) => this.props.addBusiness('test')}>
+        <button onClick={(e) => dispatch(businessActions.addBusiness('test'))}>
           Add
         </button>
       </div>
@@ -31,12 +32,10 @@ export default class BusinessManager extends Component {
 }
 
 BusinessManager.propTypes = {
-  incrementStock: PropTypes.func.isRequired,
-  addBusiness: PropTypes.func.isRequired,
   businesses: PropTypes.arrayOf(PropTypes.shape({
     name: PropTypes.string.isRequired,
     amount: PropTypes.number.isRequired
   }).isRequired).isRequired
 }
 
-export default connect(mapStateToProps, businessActions)(BusinessManager)
+export default connect(mapStateToProps)(BusinessManager)

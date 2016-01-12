@@ -11,7 +11,7 @@ export const STOCK_INCREMENT = 'STOCK_INCREMENT'
 // Actions
 // ------------------------------------
 export const addBusiness = createAction(ADD_BUSINESS, (value = 1) => value)
-export const incrementStock = createAction(STOCK_INCREMENT, (value) => value)
+export const incrementStock = createAction(STOCK_INCREMENT, (id, value) => { return {id: id, value: value} })
 
 export const actions = {
   addBusiness,
@@ -24,6 +24,17 @@ export const actions = {
 // export default handleActions({
 //   [ADD_BUSINESS]: (state, { payload }) => state + payload
 // }, 1)
+
+function increment_stock (state, action) {
+  if (state.id !== action.payload.id) {
+    return state
+  }
+  console.log(state)
+  return {
+    ...state,
+    amount: state.amount + action.payload.value
+  }
+}
 export default handleActions({
   ADD_BUSINESS: (state = [], action) => ([
     ...state,
@@ -34,13 +45,7 @@ export default handleActions({
     }
   ]),
   STOCK_INCREMENT: (state = [], action) => {
-    if (state.id !== action.id) {
-      return state
-    }
-    return {
-      ...state,
-      amount: state.count + action.payload.amount
-    }
+    return state.map(b => increment_stock(b, action))
   }
 }, [])
 
