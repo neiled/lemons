@@ -1,20 +1,13 @@
 import React, { Component, PropTypes } from 'react'
-// import { connect } from 'react-redux'
-// import { actions as businessActions } from 'redux/modules/business_manager'
-
 import Business from './Business'
 
-// const mapStateToProps = (state) => ({
-//   businesses: state.business_manager
-// })
 export default class BusinessManager extends Component {
     render () {
       const { businesses, actions } = this.props
 
-      // const {dispatch} = this.props
       return (
       <div>
-        <ul>
+        <div className='row'>
           {businesses.map(business =>
             <Business
               key={business.id}
@@ -24,9 +17,9 @@ export default class BusinessManager extends Component {
               {...business}
             />
           )}
-        </ul>
-        <button onClick={(e) => actions.addBusiness('test')}>
-          Add
+        </div>
+        <button className='btn btn-success' onClick={(e) => actions.addBusiness('Lemon Stand')}>
+          <span className='glyphicon glyphicon-plus' aria-hidden='true'></span> Buy Lemon Stand
         </button>
       </div>
       )
@@ -42,5 +35,3 @@ BusinessManager.propTypes = {
 }
 
 export default BusinessManager
-
-// export default connect(mapStateToProps, businessActions)(BusinessManager)
