@@ -1,11 +1,18 @@
 import React, { PropTypes } from 'react'
 
+function start_stock_take (seconds, decrementStock) {
+  setTimeout(() => {
+    decrementStock()
+    if (this.props.amount > 0) {
+      start_stock_take(seconds, decrementStock)
+    }
+  }, seconds)
+}
+
 class Business extends React.Component {
-  static propTypes = {
-    name: PropTypes.string.isRequired,
-    amount: PropTypes.number.isRequired,
-    incrementStock: PropTypes.func.isRequired
-  };
+  componentDidMount () {
+    start_stock_take(5000, this.props.decrementStock).bind(this)
+  }
   render () {
     return (
     <div className='col-xs-4'>
@@ -26,5 +33,11 @@ class Business extends React.Component {
     </div>
     )
   }
+  static propTypes = {
+    name: PropTypes.string.isRequired,
+    amount: PropTypes.number.isRequired,
+    incrementStock: PropTypes.func.isRequired,
+    decrementStock: PropTypes.func.isRequired
+  };
 }
 export default Business

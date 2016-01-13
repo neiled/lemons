@@ -17,6 +17,7 @@ export default class BusinessManager extends Component {
               name={business.name}
               amount={business.amount}
               incrementStock={() => actions.incrementStock(business.id, 1, business.stock_cost)}
+              decrementStock={() => actions.decrementStock(business.id, 1)}
               {...business}
             />
           )}
