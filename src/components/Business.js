@@ -1,17 +1,16 @@
 import React, { PropTypes } from 'react'
 
-function start_stock_take (seconds, decrementStock) {
-  setTimeout(() => {
-    decrementStock()
-    if (this.props.amount > 0) {
-      start_stock_take(seconds, decrementStock)
-    }
-  }, seconds)
-}
-
 class Business extends React.Component {
+  start_stock_take (seconds, decrementStock) {
+    setTimeout(() => {
+      if (this.props.amount > 0) {
+        decrementStock()
+      }
+      this.start_stock_take(seconds, decrementStock)
+    }, seconds)
+  }
   componentDidMount () {
-    start_stock_take(5000, this.props.decrementStock).bind(this)
+    this.start_stock_take(5000, this.props.decrementStock)
   }
   render () {
     return (
