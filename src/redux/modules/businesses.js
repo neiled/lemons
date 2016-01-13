@@ -29,7 +29,6 @@ function increment_stock (state, action) {
   if (state.id !== action.payload.id) {
     return state
   }
-  console.log(state)
   return {
     ...state,
     amount: state.amount + action.payload.value
