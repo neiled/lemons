@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { Link } from 'react-router'
+// import { Link } from 'react-router'
 // import BusinessManager from '../../components/BusinessManager'
 import BusinessManagerContainer from 'containers/BusinessManagerContainer'
 
@@ -14,7 +14,6 @@ export class HomeView extends React.Component {
           <img src='lemon.png' style={{width: '100px', height: '100px'}}></img>
         </div>
         <BusinessManagerContainer />
-        <Link to='/404'>Go to 404 Page</Link>
       </div>
     )
   }

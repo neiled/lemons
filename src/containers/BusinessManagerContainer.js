@@ -6,23 +6,25 @@ import * as BusinessManagerActions from '../redux/modules/businesses'
 
 class BusinessManagerContainer extends Component {
   render () {
-    const { businesses, actions } = this.props
+    const { businesses, user, actions } = this.props
     return (
       <div>
-        <BusinessManager businesses={businesses} actions={actions} />
+        <BusinessManager businesses={businesses} cash={user.cash} actions={actions} />
       </div>
     )
   }
 }
 
 BusinessManagerContainer.propTypes = {
+  user: PropTypes.object.isRequired,
   businesses: PropTypes.array.isRequired,
   actions: PropTypes.object.isRequired
 }
 
 function mapStateToProps (state) {
   return {
-    businesses: state.businesses
+    businesses: state.businesses,
+    user: state.user
   }
 }
 

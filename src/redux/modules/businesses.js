@@ -11,19 +11,12 @@ export const STOCK_INCREMENT = 'STOCK_INCREMENT'
 // Actions
 // ------------------------------------
 export const addBusiness = createAction(ADD_BUSINESS, (value = 1) => value)
-export const incrementStock = createAction(STOCK_INCREMENT, (id, value) => { return {id: id, value: value} })
+export const incrementStock = createAction(STOCK_INCREMENT, (id, value, stock_cost) => { return {id: id, value: value, stock_cost: stock_cost} })
 
 export const actions = {
   addBusiness,
   incrementStock
 }
-
-// ------------------------------------
-// Reducer
-// ------------------------------------
-// export default handleActions({
-//   [ADD_BUSINESS]: (state, { payload }) => state + payload
-// }, 1)
 
 function increment_stock (state, action) {
   if (state.id !== action.payload.id) {
@@ -39,7 +32,9 @@ export default handleActions({
     ...state,
     {
       id: uuid.v4(),
-      name: action.payload,
+      name: action.payload.name,
+      cost: action.payload.cost,
+      stock_cost: action.payload.stock_cost,
       amount: 1
     }
   ]),
@@ -47,7 +42,3 @@ export default handleActions({
     return state.map(b => increment_stock(b, action))
   }
 }, [])
-
-// export default handleActions({
-//   [STOCK_INCREMENT]: (state, { payload }) => state + payload
-// }, 1)
