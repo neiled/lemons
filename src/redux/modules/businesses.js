@@ -52,7 +52,7 @@ export default handleActions({
       cost: action.payload.cost,
       stock_cost: action.payload.stock_cost,
       sale_price: action.payload.sale_price,
-      amount: 1
+      amount: 0
     }
   ]),
   STOCK_INCREMENT: (state = [], action) => {
