@@ -7,6 +7,7 @@ import uuid from 'node-uuid'
 export const ADD_BUSINESS = 'ADD_BUSINESS'
 export const STOCK_INCREMENT = 'STOCK_INCREMENT'
 export const STOCK_DECREMENT = 'STOCK_DECREMENT'
+export const SELL_STOCK = 'SELL_STOCK'
 
 // ------------------------------------
 // Actions
@@ -14,6 +15,7 @@ export const STOCK_DECREMENT = 'STOCK_DECREMENT'
 export const addBusiness = createAction(ADD_BUSINESS, (value = 1) => value)
 export const incrementStock = createAction(STOCK_INCREMENT, (id, value, stock_cost) => { return {id: id, value: value, stock_cost: stock_cost} })
 export const decrementStock = createAction(STOCK_DECREMENT, (id, value, stock_cost) => { return {id: id, value: value} })
+export const sellStock = createAction(SELL_STOCK, (id, value, sale_price) => { return {id: id, value: value, sale_price: sale_price} })
 
 export const actions = {
   addBusiness,
@@ -49,6 +51,7 @@ export default handleActions({
       name: action.payload.name,
       cost: action.payload.cost,
       stock_cost: action.payload.stock_cost,
+      sale_price: action.payload.sale_price,
       amount: 1
     }
   ]),
@@ -56,6 +59,9 @@ export default handleActions({
     return state.map(b => increment_stock(b, action))
   },
   STOCK_DECREMENT: (state = [], action) => {
+    return state.map(b => decrement_stock(b, action))
+  },
+  SELL_STOCK: (state = [], action) => {
     return state.map(b => decrement_stock(b, action))
   }
 }, [])

@@ -17,12 +17,12 @@ export default class BusinessManager extends Component {
               name={business.name}
               amount={business.amount}
               incrementStock={() => actions.incrementStock(business.id, 1, business.stock_cost)}
-              decrementStock={() => actions.decrementStock(business.id, 1)}
+              decrementStock={() => actions.sellStock(business.id, 1, business.sale_price)}
               {...business}
             />
           )}
         </div>
-        <button className='btn btn-success' disabled={cash < 100} onClick={(e) => actions.addBusiness({name: 'Lemon Stand', cost: 100, stock_cost: 1})}>
+        <button className='btn btn-success' disabled={cash < 100} onClick={(e) => actions.addBusiness({name: 'Lemon Stand', cost: 100, stock_cost: 1, sale_price: 3})}>
           <span className='glyphicon glyphicon-plus' aria-hidden='true'></span> Buy Lemon Stand
         </button>
       </div>

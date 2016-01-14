@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react'
 
 class Business extends React.Component {
   start_stock_take (seconds, decrementStock) {
-    setTimeout(() => {
+    this.timer = setTimeout(() => {
       if (this.props.amount > 0) {
         decrementStock()
       }
@@ -10,7 +10,12 @@ class Business extends React.Component {
     }, seconds)
   }
   componentDidMount () {
-    this.start_stock_take(5000, this.props.decrementStock)
+    this.start_stock_take(1000, this.props.decrementStock)
+  }
+  componentWillUnmount () {
+    if (this.timer) {
+      clearTimeout(this.timer)
+    }
   }
   render () {
     return (
