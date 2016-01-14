@@ -6,7 +6,7 @@ class BuyBusinessButton extends Component {
     const {name, cash, cost, stockCost, salePrice, actions, maxCash} = this.props
     return (
       <li>
-        <button className='btn btn-success' hidden={maxCash <= cost} disabled={cash < cost} onClick={(e) => actions.addBusiness({name: name, cost: cost, stock_cost: stockCost, sale_price: salePrice})}>
+        <button className='btn btn-primary' hidden={maxCash < cost} disabled={cash < cost} onClick={(e) => actions.addBusiness({name: name, cost: cost, stock_cost: stockCost, sale_price: salePrice})}>
           <span className='glyphicon glyphicon-plus' aria-hidden='true'></span> Buy {name} (${cost})
         </button>
       </li>

@@ -19,7 +19,13 @@ class Business extends React.Component {
   }
   render () {
     const {name, stockAmount, cash, incrementStock, stockCost} = this.props
-    var panel_type = 'panel '.concat(stockAmount > 0 ? 'panel-default' : 'panel-danger')
+    var panel_type = 'panel '
+    if (stockAmount <= 0) {
+      panel_type = panel_type.concat('panel-danger')
+    } else if (stockAmount < 5) {
+      panel_type = panel_type.concat('panel-warning')
+    } else panel_type = panel_type.concat('panel-success')
+
     return (
     <div className='col-xs-4'>
       <div className={panel_type} >
@@ -29,10 +35,16 @@ class Business extends React.Component {
         <div className='panel-body'>
           <p>Stock Remaining: {stockAmount}</p>
           <p>
+          Buy Stock:&nbsp;
+            <button className='btn btn-default'
+                    onClick={() => incrementStock(1, stockCost)}
+                    disabled={cash < stockCost * 1}>
+              x 1 (${stockCost})
+            </button>
             <button className='btn btn-default'
                     onClick={() => incrementStock(5, stockCost)}
                     disabled={cash < stockCost * 5}>
-              Buy Stock (${stockCost})
+              x 5 (${stockCost * 5})
             </button>
           </p>
         </div>
