@@ -1,16 +1,16 @@
 import React, { PropTypes } from 'react'
 
 class Business extends React.Component {
-  start_stock_take (seconds, decrementStock) {
+  start_stock_take (seconds, sellStock) {
     this.timer = setTimeout(() => {
-      if (this.props.amount > 0) {
-        decrementStock()
+      if (this.props.stockAmount > 0) {
+        sellStock()
       }
-      this.start_stock_take(seconds, decrementStock)
+      this.start_stock_take(seconds, sellStock)
     }, seconds)
   }
   componentDidMount () {
-    this.start_stock_take(1000, this.props.decrementStock)
+    this.start_stock_take(1000, this.props.sellStock)
   }
   componentWillUnmount () {
     if (this.timer) {
@@ -18,8 +18,8 @@ class Business extends React.Component {
     }
   }
   render () {
-    const {name, amount, cash, incrementStock, stockCost} = this.props
-    var panel_type = 'panel '.concat(amount > 0 ? 'panel-default' : 'panel-danger')
+    const {name, stockAmount, cash, incrementStock, stockCost} = this.props
+    var panel_type = 'panel '.concat(stockAmount > 0 ? 'panel-default' : 'panel-danger')
     return (
     <div className='col-xs-4'>
       <div className={panel_type} >
@@ -27,11 +27,11 @@ class Business extends React.Component {
           <h3 className='panel-title'>{name}</h3>
         </div>
         <div className='panel-body'>
-          <p>Stock Remaining: {amount}</p>
+          <p>Stock Remaining: {stockAmount}</p>
           <p>
             <button className='btn btn-default'
                     onClick={() => incrementStock(5, stockCost)}
-                    disabled={cash < stockCost}>
+                    disabled={cash < stockCost * 5}>
               Buy Stock (${stockCost})
             </button>
           </p>
@@ -42,11 +42,11 @@ class Business extends React.Component {
   }
   static propTypes = {
     name: PropTypes.string.isRequired,
-    amount: PropTypes.number.isRequired,
+    stockAmount: PropTypes.number.isRequired,
     cash: PropTypes.number.isRequired,
     stockCost: PropTypes.number.isRequired,
     incrementStock: PropTypes.func.isRequired,
-    decrementStock: PropTypes.func.isRequired
+    sellStock: PropTypes.func.isRequired
   };
 }
 export default Business

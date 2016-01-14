@@ -36,11 +36,11 @@ export default class BusinessManager extends Component {
             <Business
               key={business.id}
               name={business.name}
-              amount={business.amount}
+              stockAmount={business.stockAmount}
               cash={cash}
-              stockCost={business.sale_price}
+              stockCost={business.stock_cost}
               incrementStock={(amount, cost) => actions.incrementStock(business.id, amount, cost)}
-              decrementStock={() => actions.sellStock(business.id, 1, business.sale_price)}
+              sellStock={() => actions.sellStock(business.id, 1, business.sale_price)}
               {...business}
             />
           )}
@@ -66,7 +66,8 @@ BusinessManager.propTypes = {
   actions: PropTypes.object.isRequired,
   businesses: PropTypes.arrayOf(PropTypes.shape({
     name: PropTypes.string.isRequired,
-    amount: PropTypes.number.isRequired
+    stockAmount: PropTypes.number.isRequired,
+    stock_cost: PropTypes.number.isRequired
   }).isRequired).isRequired
 }
 

@@ -14,13 +14,13 @@ export const SELL_STOCK = 'SELL_STOCK'
 // ------------------------------------
 export const addBusiness = createAction(ADD_BUSINESS, (value = 1) => value)
 export const incrementStock = createAction(STOCK_INCREMENT, (id, value, stock_cost) => { return {id: id, value: value, stock_cost: stock_cost} })
-export const decrementStock = createAction(STOCK_DECREMENT, (id, value, stock_cost) => { return {id: id, value: value, stock_cost: stock_cost} })
+// export const decrementStock = createAction(STOCK_DECREMENT, (id, value, stock_cost) => { return {id: id, value: value, stock_cost: stock_cost} })
 export const sellStock = createAction(SELL_STOCK, (id, value, sale_price) => { return {id: id, value: value, sale_price: sale_price} })
 
 export const actions = {
   addBusiness,
   incrementStock,
-  decrementStock
+  sellStock
 }
 
 function increment_stock (state, action) {
@@ -29,7 +29,7 @@ function increment_stock (state, action) {
   }
   return {
     ...state,
-    amount: state.amount + action.payload.value
+    stockAmount: state.stockAmount + action.payload.value
   }
 }
 
@@ -39,7 +39,7 @@ function decrement_stock (state, action) {
   }
   return {
     ...state,
-    amount: state.amount - action.payload.value
+    stockAmount: state.stockAmount - action.payload.value
   }
 }
 
@@ -52,7 +52,7 @@ export default handleActions({
       cost: action.payload.cost,
       stock_cost: action.payload.stock_cost,
       sale_price: action.payload.sale_price,
-      amount: 0
+      stockAmount: 0
     }
   ]),
   STOCK_INCREMENT: (state = [], action) => {
