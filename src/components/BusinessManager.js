@@ -21,9 +21,9 @@ export default class BusinessManager extends Component {
       <div>
         <div className='row'>
           <div className='col-md-12'>
-            <p>
-              Cash: {cash}
-            </p>
+            <h3>
+              Cash: ${cash}
+            </h3>
             <ul className='list-inline'>
               <BuyBusinessButton name='Lemonade Stand' cash={cash} cost={100} stockCost={1} salePrice={2} maxCash={maxCash} actions={actions} />
               <BuyBusinessButton name='Cookie Stand' cash={cash} cost={500} stockCost={2} salePrice={4} maxCash={maxCash} actions={actions} />
@@ -37,6 +37,7 @@ export default class BusinessManager extends Component {
               key={business.id}
               name={business.name}
               stockAmount={business.stockAmount}
+              sellPrice={business.sale_price}
               cash={cash}
               stockCost={business.stock_cost}
               incrementStock={(amount, cost) => actions.incrementStock(business.id, amount, cost)}

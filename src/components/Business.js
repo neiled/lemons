@@ -18,7 +18,7 @@ class Business extends React.Component {
     }
   }
   render () {
-    const {name, stockAmount, cash, incrementStock, stockCost} = this.props
+    const {name, stockAmount, cash, incrementStock, stockCost, sellPrice} = this.props
     var panel_type = 'panel '
     if (stockAmount <= 0) {
       panel_type = panel_type.concat('panel-danger')
@@ -27,13 +27,14 @@ class Business extends React.Component {
     } else panel_type = panel_type.concat('panel-success')
 
     return (
-    <div className='col-xs-4'>
+    <div className='col-xs-12 col-md-4'>
       <div className={panel_type} >
         <div className='panel-heading'>
           <h3 className='panel-title'>{name}</h3>
         </div>
         <div className='panel-body'>
           <p>Stock Remaining: {stockAmount}</p>
+          <p>Sale Price: {sellPrice}</p>
           <p>
           Buy Stock:&nbsp;
             <button className='btn btn-default'
@@ -57,6 +58,7 @@ class Business extends React.Component {
     stockAmount: PropTypes.number.isRequired,
     cash: PropTypes.number.isRequired,
     stockCost: PropTypes.number.isRequired,
+    sellPrice: PropTypes.number.isRequired,
     incrementStock: PropTypes.func.isRequired,
     sellStock: PropTypes.func.isRequired
   };
