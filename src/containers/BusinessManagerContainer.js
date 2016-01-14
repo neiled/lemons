@@ -9,7 +9,7 @@ class BusinessManagerContainer extends Component {
     const { businesses, user, actions } = this.props
     return (
       <div>
-        <BusinessManager businesses={businesses} cash={user.cash} actions={actions} />
+        <BusinessManager businesses={businesses} cash={user.cash} maxCash={user.max_cash} actions={actions} />
       </div>
     )
   }

@@ -19,9 +19,10 @@ class Business extends React.Component {
   }
   render () {
     const {name, amount, cash, incrementStock, stockCost} = this.props
+    var panel_type = 'panel '.concat(amount > 0 ? 'panel-default' : 'panel-danger')
     return (
     <div className='col-xs-4'>
-      <div className='panel panel-default'>
+      <div className={panel_type} >
         <div className='panel-heading'>
           <h3 className='panel-title'>{name}</h3>
         </div>
@@ -29,9 +30,9 @@ class Business extends React.Component {
           <p>Stock Remaining: {amount}</p>
           <p>
             <button className='btn btn-default'
-                    onClick={incrementStock}
+                    onClick={() => incrementStock(5, stockCost)}
                     disabled={cash < stockCost}>
-              Buy Stock
+              Buy Stock (${stockCost})
             </button>
           </p>
         </div>

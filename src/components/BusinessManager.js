@@ -3,10 +3,10 @@ import Business from './Business'
 
 class BuyBusinessButton extends Component {
   render () {
-    const {name, cash, cost, stockCost, salePrice, actions} = this.props
+    const {name, cash, cost, stockCost, salePrice, actions, maxCash} = this.props
     return (
       <li>
-        <button className='btn btn-success' disabled={cash < cost} onClick={(e) => actions.addBusiness({name: name, cost: cost, stock_cost: stockCost, sale_price: salePrice})}>
+        <button className='btn btn-success' hidden={maxCash <= cost} disabled={cash < cost} onClick={(e) => actions.addBusiness({name: name, cost: cost, stock_cost: stockCost, sale_price: salePrice})}>
           <span className='glyphicon glyphicon-plus' aria-hidden='true'></span> Buy {name} (${cost})
         </button>
       </li>
@@ -15,18 +15,21 @@ class BuyBusinessButton extends Component {
 }
 export default class BusinessManager extends Component {
     render () {
-      const { businesses, actions, cash } = this.props
+      const { businesses, actions, cash, maxCash } = this.props
 
       return (
       <div>
         <div className='row'>
-          <p>
-            Cash: {cash}
-          </p>
-          <ul className='list-inline'>
-            <BuyBusinessButton name='Lemon Stand' cash={cash} cost={100} stockCost={1} salePrice={3} actions={actions} />
-            <BuyBusinessButton name='Cookie Stand' cash={cash} cost={500} stockCost={3} salePrice={5} actions={actions} />
-          </ul>
+          <div className='col-md-12'>
+            <p>
+              Cash: {cash}
+            </p>
+            <ul className='list-inline'>
+              <BuyBusinessButton name='Lemonade Stand' cash={cash} cost={100} stockCost={1} salePrice={2} maxCash={maxCash} actions={actions} />
+              <BuyBusinessButton name='Cookie Stand' cash={cash} cost={500} stockCost={2} salePrice={4} maxCash={maxCash} actions={actions} />
+              <BuyBusinessButton name='Cupcake Stand' cash={cash} cost={1000} stockCost={3} salePrice={6} maxCash={maxCash} actions={actions} />
+            </ul>
+          </div>
         </div>
         <div className='row'>
           {businesses.map(business =>
@@ -36,7 +39,7 @@ export default class BusinessManager extends Component {
               amount={business.amount}
               cash={cash}
               stockCost={business.sale_price}
-              incrementStock={() => actions.incrementStock(business.id, 1, business.stock_cost)}
+              incrementStock={(amount, cost) => actions.incrementStock(business.id, amount, cost)}
               decrementStock={() => actions.sellStock(business.id, 1, business.sale_price)}
               {...business}
             />
@@ -50,6 +53,7 @@ export default class BusinessManager extends Component {
 BuyBusinessButton.propTypes = {
   name: PropTypes.string.isRequired,
   cash: PropTypes.number.isRequired,
+  maxCash: PropTypes.number.isRequired,
   cost: PropTypes.number.isRequired,
   stockCost: PropTypes.number.isRequired,
   actions: PropTypes.object.isRequired,
@@ -58,6 +62,7 @@ BuyBusinessButton.propTypes = {
 
 BusinessManager.propTypes = {
   cash: PropTypes.number.isRequired,
+  maxCash: PropTypes.number.isRequired,
   actions: PropTypes.object.isRequired,
   businesses: PropTypes.arrayOf(PropTypes.shape({
     name: PropTypes.string.isRequired,
