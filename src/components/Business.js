@@ -36,7 +36,7 @@ class Business extends React.Component {
           <p>Stock Remaining: {stockAmount}</p>
           <p>Sale Price: {sellPrice}</p>
           <p>
-          Buy Stock:&nbsp;
+          Buy Stock (${stockCost}):&nbsp;
             <button className='btn btn-default'
                     onClick={() => incrementStock(1, stockCost)}
                     disabled={cash < stockCost * 1}>

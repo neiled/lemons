@@ -24,27 +24,52 @@ export default class BusinessManager extends Component {
             <h3>
               Cash: ${cash}
             </h3>
-            <ul className='list-inline'>
-              <BuyBusinessButton name='Lemonade Stand' cash={cash} cost={100} stockCost={1} salePrice={2} maxCash={maxCash} actions={actions} />
-              <BuyBusinessButton name='Cookie Stand' cash={cash} cost={500} stockCost={2} salePrice={4} maxCash={maxCash} actions={actions} />
-              <BuyBusinessButton name='Cupcake Stand' cash={cash} cost={1000} stockCost={3} salePrice={6} maxCash={maxCash} actions={actions} />
-            </ul>
+            <div>
+              <div className='row'>
+                <div className='col-md-12'>
+                  <ul id='myTabs' className='nav nav-tabs' role='tablist'>
+                    <li role='presentation' className='active'><a href='#businesses' aria-controls='businesses' role='tab' data-toggle='tab'>Businesses</a></li>
+                    <li role='presentation'><a href='#staff' aria-controls='staff' role='tab' data-toggle='tab'>Staff</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div className='row'>
+                <div className='col-md-12'>
+                  <div className='tab-content'>
+                    <div className='tab-pane active' id='businesses'>
+                      <div className='row'>
+                        <div className='col-md-12'>
+                          <ul className='list-inline'>
+                            <BuyBusinessButton name='Lemonade Stand' cash={cash} cost={50} stockCost={1} salePrice={2} maxCash={maxCash} actions={actions} />
+                            <BuyBusinessButton name='Cookie Stand' cash={cash} cost={250} stockCost={2} salePrice={4} maxCash={maxCash} actions={actions} />
+                            <BuyBusinessButton name='Cupcake Stand' cash={cash} cost={500} stockCost={3} salePrice={6} maxCash={maxCash} actions={actions} />
+                          </ul>
+                        </div>
+                      </div>
+                      <div className='row'>
+                        {businesses.map(business =>
+                          <Business
+                            key={business.id}
+                            name={business.name}
+                            stockAmount={business.stockAmount}
+                            sellPrice={business.sale_price}
+                            cash={cash}
+                            stockCost={business.stock_cost}
+                            incrementStock={(amount, cost) => actions.incrementStock(business.id, amount, cost)}
+                            sellStock={() => actions.sellStock(business.id, 1, business.sale_price)}
+                            {...business}
+                          />
+                        )}
+                      </div>
+                    </div>
+                    <div className='tab-pane' id='staff'>
+                      This will list the staff you have.
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
-        <div className='row'>
-          {businesses.map(business =>
-            <Business
-              key={business.id}
-              name={business.name}
-              stockAmount={business.stockAmount}
-              sellPrice={business.sale_price}
-              cash={cash}
-              stockCost={business.stock_cost}
-              incrementStock={(amount, cost) => actions.incrementStock(business.id, amount, cost)}
-              sellStock={() => actions.sellStock(business.id, 1, business.sale_price)}
-              {...business}
-            />
-          )}
         </div>
       </div>
       )

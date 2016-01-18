@@ -31,4 +31,4 @@ export default handleActions({
     cash: state.cash + action.payload.sale_price,
     max_cash: state.cash > state.max_cash ? state.cash : state.max_cash
   })
-}, {cash: 110, max_cash: 110})
+}, {cash: 60, max_cash: 60})
