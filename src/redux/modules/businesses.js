@@ -52,6 +52,7 @@ export default handleActions({
       cost: action.payload.cost,
       stock_cost: action.payload.stock_cost,
       sale_price: action.payload.sale_price,
+      maxStock: action.payload.maxStock,
       stockAmount: 0
     }
   ]),

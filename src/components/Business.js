@@ -1,5 +1,26 @@
 import React, { PropTypes } from 'react'
 
+class StockBuyButton extends React.Component {
+  render () {
+    const {amount, stockAmount, cash, incrementStock, stockCost, maxStock} = this.props
+    return (
+      <button className='btn btn-default'
+              onClick={() => incrementStock(amount, stockCost)}
+              disabled={stockAmount > maxStock - amount || cash < stockCost * amount}>
+        x {amount} (${stockCost * amount})
+      </button>
+    )
+  }
+  static propTypes = {
+    stockAmount: PropTypes.number.isRequired,
+    amount: PropTypes.number.isRequired,
+    cash: PropTypes.number.isRequired,
+    stockCost: PropTypes.number.isRequired,
+    maxStock: PropTypes.number.isRequired,
+    incrementStock: PropTypes.func.isRequired
+  };
+}
+
 class Business extends React.Component {
   start_stock_take (seconds, sellStock) {
     this.timer = setTimeout(() => {
@@ -17,14 +38,19 @@ class Business extends React.Component {
       clearTimeout(this.timer)
     }
   }
-  render () {
-    const {name, stockAmount, cash, incrementStock, stockCost, sellPrice} = this.props
+  getPanelType (stockAmount) {
     var panel_type = 'panel '
     if (stockAmount <= 0) {
       panel_type = panel_type.concat('panel-danger')
     } else if (stockAmount < 5) {
       panel_type = panel_type.concat('panel-warning')
     } else panel_type = panel_type.concat('panel-success')
+
+    return panel_type
+  }
+  render () {
+    const {name, stockAmount, cash, incrementStock, stockCost, sellPrice, maxStock} = this.props
+    var panel_type = this.getPanelType(stockAmount)
 
     return (
     <div className='col-xs-12 col-md-4'>
@@ -37,16 +63,8 @@ class Business extends React.Component {
           <p>Sale Price: {sellPrice}</p>
           <p>
           Buy Stock (${stockCost}):&nbsp;
-            <button className='btn btn-default'
-                    onClick={() => incrementStock(1, stockCost)}
-                    disabled={cash < stockCost * 1}>
-              x 1 (${stockCost})
-            </button>
-            <button className='btn btn-default'
-                    onClick={() => incrementStock(5, stockCost)}
-                    disabled={cash < stockCost * 5}>
-              x 5 (${stockCost * 5})
-            </button>
+            <StockBuyButton amount={1} cash={cash} stockCost={stockCost} incrementStock={incrementStock} maxStock={maxStock} stockAmount={stockAmount}/>
+            <StockBuyButton amount={5} cash={cash} stockCost={stockCost} incrementStock={incrementStock} maxStock={maxStock} stockAmount={stockAmount} />
           </p>
         </div>
       </div>
@@ -58,6 +76,7 @@ class Business extends React.Component {
     stockAmount: PropTypes.number.isRequired,
     cash: PropTypes.number.isRequired,
     stockCost: PropTypes.number.isRequired,
+    maxStock: PropTypes.number.isRequired,
     sellPrice: PropTypes.number.isRequired,
     incrementStock: PropTypes.func.isRequired,
     sellStock: PropTypes.func.isRequired
