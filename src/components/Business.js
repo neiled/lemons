@@ -4,11 +4,13 @@ class StockBuyButton extends React.Component {
   render () {
     const {amount, stockAmount, cash, incrementStock, stockCost, maxStock} = this.props
     return (
-      <button className='btn btn-default'
-              onClick={() => incrementStock(amount, stockCost)}
-              disabled={stockAmount > maxStock - amount || cash < stockCost * amount}>
-        x {amount} (${stockCost * amount})
-      </button>
+      <li>
+        <button className='btn btn-default'
+                onClick={() => incrementStock(amount, stockCost)}
+                disabled={stockAmount > maxStock - amount || cash < stockCost * amount}>
+          x {amount} (${stockCost * amount})
+        </button>
+      </li>
     )
   }
   static propTypes = {
@@ -63,9 +65,12 @@ class Business extends React.Component {
           <p>Sale Price: {sellPrice}</p>
           <p>
           Buy Stock (${stockCost}):&nbsp;
+          </p>
+          <ul className='list-inline'>
             <StockBuyButton amount={1} cash={cash} stockCost={stockCost} incrementStock={incrementStock} maxStock={maxStock} stockAmount={stockAmount}/>
             <StockBuyButton amount={5} cash={cash} stockCost={stockCost} incrementStock={incrementStock} maxStock={maxStock} stockAmount={stockAmount} />
-          </p>
+            <StockBuyButton amount={maxStock - stockAmount} cash={cash} stockCost={stockCost} incrementStock={incrementStock} maxStock={maxStock} stockAmount={stockAmount} />
+          </ul>
         </div>
       </div>
     </div>
