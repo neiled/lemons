@@ -74,7 +74,7 @@ export default handleActions({
   SELL_BUSINESS: (state = [], action) => {
     var index = state.findIndex((element) => element.id === action.payload.id)
     return state
-      .splice(0, index)
+      .slice(0, index)
       .concat(state.slice(index + 1))
   },
   STOCK_INCREMENT: (state = [], action) => {
