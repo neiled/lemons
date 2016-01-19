@@ -57,6 +57,7 @@ export default class BusinessManager extends Component {
                             cash={cash}
                             stockCost={business.stock_cost}
                             incrementStock={(amount, cost) => actions.incrementStock(business.id, amount, cost)}
+                            sellBusiness={(sellValue) => actions.sellBusiness(business.id, sellValue)}
                             sellStock={() => actions.sellStock(business.id, 1, business.sale_price)}
                             {...business}
                           />

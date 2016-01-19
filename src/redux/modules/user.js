@@ -27,6 +27,10 @@ export default handleActions({
   STOCK_INCREMENT: (state, action) => Object.assign({}, state, {
     cash: state.cash - (action.payload.stock_cost * action.payload.value)
   }),
+  SELL_BUSINESS: (state = [], action) => Object.assign({}, state, {
+    cash: state.cash + action.payload.sellValue,
+    max_cash: state.cash > state.max_cash ? state.cash : state.max_cash
+  }),
   SELL_STOCK: (state, action) => Object.assign({}, state, {
     cash: state.cash + action.payload.sale_price,
     max_cash: state.cash > state.max_cash ? state.cash : state.max_cash

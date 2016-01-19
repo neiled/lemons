@@ -51,7 +51,7 @@ class Business extends React.Component {
     return panel_type
   }
   render () {
-    const {name, stockAmount, cash, incrementStock, stockCost, sellPrice, maxStock} = this.props
+    const {name, stockAmount, cash, incrementStock, sellBusiness, stockCost, sellPrice, maxStock} = this.props
     var panel_type = this.getPanelType(stockAmount)
 
     return (
@@ -64,13 +64,14 @@ class Business extends React.Component {
           <p>Stock Remaining: {stockAmount}</p>
           <p>Sale Price: {sellPrice}</p>
           <p>
-          Buy Stock (${stockCost}):&nbsp;
+          Buy Stock @ ${stockCost}:&nbsp;
           </p>
           <ul className='list-inline'>
             <StockBuyButton amount={1} cash={cash} stockCost={stockCost} incrementStock={incrementStock} maxStock={maxStock} stockAmount={stockAmount}/>
             <StockBuyButton amount={5} cash={cash} stockCost={stockCost} incrementStock={incrementStock} maxStock={maxStock} stockAmount={stockAmount} />
             <StockBuyButton amount={maxStock - stockAmount} cash={cash} stockCost={stockCost} incrementStock={incrementStock} maxStock={maxStock} stockAmount={stockAmount} />
           </ul>
+          <button className='btn btn-danger' onClick={() => sellBusiness(stockAmount * stockCost)}>Sell @ ${stockAmount * stockCost}</button>
         </div>
       </div>
     </div>
@@ -84,6 +85,7 @@ class Business extends React.Component {
     maxStock: PropTypes.number.isRequired,
     sellPrice: PropTypes.number.isRequired,
     incrementStock: PropTypes.func.isRequired,
+    sellBusiness: PropTypes.func.isRequired,
     sellStock: PropTypes.func.isRequired
   };
 }
