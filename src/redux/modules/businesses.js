@@ -50,7 +50,7 @@ function decrement_stock (state, action) {
 
 export default handleActions({
   ADD_BUSINESS: (state = [], action) => {
-    mixpanel.track('Buy Business')
+    mixpanel.track('Buy Business', {'business type': action.payload.name})
     return [
       ...state,
       {
@@ -65,6 +65,7 @@ export default handleActions({
     ]
   },
   SELL_BUSINESS: (state = [], action) => {
+    mixpanel.track('Sell Business')
     var index = state.findIndex((element) => element.id === action.payload.id)
     return state
       .slice(0, index)

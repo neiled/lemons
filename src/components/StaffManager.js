@@ -22,6 +22,7 @@ export default class StaffManager extends Component {
       return (
       <div>
         <h1>Staff Manager</h1>
+        <h2>(This is not used yet, check back soon for more features!)</h2>
         <table className='table table-striped'>
           <thead>
             <tr>

@@ -9,8 +9,8 @@ export class HomeView extends React.Component {
       <div className='container'>
         <div className='jumbotron'>
           <h1>
-            Welcome to Lemons
-            <img src='lemon.png' style={{width: '100px', height: '100px'}}></img>
+            Lemons
+            <img src='lemon.png'></img>
           </h1>
         </div>
         <BusinessManagerContainer />
