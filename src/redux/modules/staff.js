@@ -15,9 +15,17 @@ export const actions = {
   hireStaff
 }
 
+function getRandomArbitrary (min, max) {
+  return Math.random() * (max - min) + min
+}
+
 function generate_staff () {
   var results = []
-  results = results.concat({id: uuid.v4(), name: 'Bob'})
+  results = results.concat({
+    id: uuid.v4(),
+    name: 'Bob',
+    stockCostModifier: getRandomArbitrary(0.5, 2)
+  })
   return results
 }
 

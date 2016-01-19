@@ -7,6 +7,9 @@ class Staff extends Component {
         <td>
           {this.props.name}
         </td>
+        <td>
+          {this.props.stockCostModifier}
+        </td>
       </tr>
     )
   }
@@ -23,6 +26,7 @@ export default class StaffManager extends Component {
           <thead>
             <tr>
               <td>Name</td>
+              <td>Stock Cost Modifier</td>
             </tr>
           </thead>
           <tbody>
@@ -30,6 +34,7 @@ export default class StaffManager extends Component {
               <Staff
                 key={s.id}
                 name={s.name}
+                stockCostModifier={s.stockCostModifier}
               />
             )}
           </tbody>
@@ -42,13 +47,14 @@ export default class StaffManager extends Component {
 StaffManager.propTypes = {
   staff: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired
+    name: PropTypes.string.isRequired,
+    stockCostModifier: PropTypes.number.isRequired
   }).isRequired).isRequired
 }
 
 Staff.propTypes = {
-  id: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired
+  name: PropTypes.string.isRequired,
+  stockCostModifier: PropTypes.number.isRequired
 }
 
 export default StaffManager
