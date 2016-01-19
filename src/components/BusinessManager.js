@@ -1,6 +1,8 @@
 import React, { Component, PropTypes } from 'react'
 import Business from './Business'
 import StaffManager from './StaffManager'
+import styles from 'styles/lemons.scss'
+import classnames from 'classnames'
 
 class BuyBusinessButton extends Component {
   render () {
@@ -28,7 +30,7 @@ export default class BusinessManager extends Component {
             <div>
               <div className='row'>
                 <div className='col-md-12'>
-                  <ul id='myTabs' className='nav nav-tabs' role='tablist'>
+                  <ul id='myTabs' className={classnames('nav nav-tabs', styles.myTabs)} role='tablist'>
                     <li role='presentation' className='active'><a href='#businesses' aria-controls='businesses' role='tab' data-toggle='tab'>Businesses</a></li>
                     <li role='presentation'><a href='#staff' aria-controls='staff' role='tab' data-toggle='tab'>Staff</a></li>
                   </ul>

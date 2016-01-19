@@ -1,7 +1,5 @@
 import React from 'react'
 import { connect } from 'react-redux'
-// import { Link } from 'react-router'
-// import BusinessManager from '../../components/BusinessManager'
 import BusinessManagerContainer from 'containers/BusinessManagerContainer'
 
 export class HomeView extends React.Component {
@@ -10,8 +8,10 @@ export class HomeView extends React.Component {
     return (
       <div className='container'>
         <div className='jumbotron'>
-          <h1>Welcome to Lemons </h1>
-          <img src='lemon.png' style={{width: '100px', height: '100px'}}></img>
+          <h1>
+            Welcome to Lemons
+            <img src='lemon.png' style={{width: '100px', height: '100px'}}></img>
+          </h1>
         </div>
         <BusinessManagerContainer />
       </div>
