@@ -43,10 +43,10 @@ export default class BusinessManager extends Component {
                           <ul className='list-inline'>
                             <BuyBusinessButton name='Lemonade Stand' cash={cash} cost={50} stockCost={1} salePrice={2} maxCash={maxCash} actions={actions} maxStock={25} />
                             <BuyBusinessButton name='Cookie Stand' cash={cash} cost={250} stockCost={2} salePrice={4} maxCash={maxCash} actions={actions} maxStock={25} />
-                            <BuyBusinessButton name='Cupcake Stand' cash={cash} cost={500} stockCost={3} salePrice={6} maxCash={maxCash} actions={actions} maxStock={25} />
-                            <BuyBusinessButton name='Ice Cream Stand' cash={cash} cost={1000} stockCost={4} salePrice={8} maxCash={maxCash} actions={actions} maxStock={25} />
-                            <BuyBusinessButton name='Burger Stand' cash={cash} cost={5000} stockCost={5} salePrice={10} maxCash={maxCash} actions={actions} maxStock={25} />
-                            <BuyBusinessButton name='Banana Stand' cash={cash} cost={10000} stockCost={6} salePrice={12} maxCash={maxCash} actions={actions} maxStock={25} />
+                            <BuyBusinessButton name='Cupcake Stand' cash={cash} cost={1000} stockCost={3} salePrice={6} maxCash={maxCash} actions={actions} maxStock={25} />
+                            <BuyBusinessButton name='Ice Cream Stand' cash={cash} cost={5000} stockCost={4} salePrice={8} maxCash={maxCash} actions={actions} maxStock={25} />
+                            <BuyBusinessButton name='Burger Stand' cash={cash} cost={25000} stockCost={5} salePrice={10} maxCash={maxCash} actions={actions} maxStock={25} />
+                            <BuyBusinessButton name='Banana Stand' cash={cash} cost={100000} stockCost={6} salePrice={12} maxCash={maxCash} actions={actions} maxStock={25} />
                           </ul>
                         </div>
                       </div>
