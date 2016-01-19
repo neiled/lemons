@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 import Business from './Business'
+import StaffManager from './StaffManager'
 
 class BuyBusinessButton extends Component {
   render () {
@@ -15,7 +16,7 @@ class BuyBusinessButton extends Component {
 }
 export default class BusinessManager extends Component {
     render () {
-      const { businesses, actions, cash, maxCash } = this.props
+      const { businesses, staff, actions, cash, maxCash } = this.props
 
       return (
       <div>
@@ -68,7 +69,7 @@ export default class BusinessManager extends Component {
                       </div>
                     </div>
                     <div className='tab-pane' id='staff'>
-                      This will list the staff you have.
+                      <StaffManager staff={staff} />
                     </div>
                   </div>
                 </div>
@@ -100,6 +101,9 @@ BusinessManager.propTypes = {
     name: PropTypes.string.isRequired,
     stockAmount: PropTypes.number.isRequired,
     stock_cost: PropTypes.number.isRequired
+  }).isRequired).isRequired,
+  staff: PropTypes.arrayOf(PropTypes.shape({
+    name: PropTypes.string.isRequired
   }).isRequired).isRequired
 }
 
