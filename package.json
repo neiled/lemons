@@ -34,6 +34,7 @@
     "koa-connect-history-api-fallback": "^0.3.0",
     "koa-convert": "^1.2.0",
     "koa-static": "^2.0.0",
+    "mixpanel-browser": "^2.7.2",
     "node-uuid": "^1.4.7",
     "react": "^0.14.0",
     "react-dom": "^0.14.0",

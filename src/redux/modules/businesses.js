@@ -1,5 +1,8 @@
 import { createAction, handleActions } from 'redux-actions'
 import uuid from 'node-uuid'
+var mixpanel = require('mixpanel-browser')
+
+mixpanel.init('b191e860a26947741e224034a8979fd6')
 
 // ------------------------------------
 // Constants
@@ -53,18 +56,21 @@ function decrement_stock (state, action) {
 // }
 
 export default handleActions({
-  ADD_BUSINESS: (state = [], action) => ([
-    ...state,
-    {
-      id: uuid.v4(),
-      name: action.payload.name,
-      cost: action.payload.cost,
-      stock_cost: action.payload.stock_cost,
-      sale_price: action.payload.sale_price,
-      maxStock: action.payload.maxStock,
-      stockAmount: 1
-    }
-  ]),
+  ADD_BUSINESS: (state = [], action) => {
+    mixpanel.track('Buy Business')
+    return [
+      ...state,
+      {
+        id: uuid.v4(),
+        name: action.payload.name,
+        cost: action.payload.cost,
+        stock_cost: action.payload.stock_cost,
+        sale_price: action.payload.sale_price,
+        maxStock: action.payload.maxStock,
+        stockAmount: 1
+      }
+    ]
+  },
   SELL_BUSINESS: (state = [], action) => {
     var index = state.findIndex((element) => element.id === action.payload.id)
     return state
