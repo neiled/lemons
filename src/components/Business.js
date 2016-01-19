@@ -50,6 +50,11 @@ class Business extends React.Component {
 
     return panel_type
   }
+  delete_business (stockAmount, stockCost, sellBusiness) {
+    if (confirm('Are you sure you want to delete?')) {
+      sellBusiness(stockAmount * stockCost)
+    }
+  }
   render () {
     const {name, stockAmount, cash, incrementStock, sellBusiness, stockCost, sellPrice, maxStock} = this.props
     var panel_type = this.getPanelType(stockAmount)
@@ -71,7 +76,7 @@ class Business extends React.Component {
             <StockBuyButton amount={5} cash={cash} stockCost={stockCost} incrementStock={incrementStock} maxStock={maxStock} stockAmount={stockAmount} />
             <StockBuyButton amount={maxStock - stockAmount} cash={cash} stockCost={stockCost} incrementStock={incrementStock} maxStock={maxStock} stockAmount={stockAmount} />
           </ul>
-          <button className='btn btn-danger' onClick={() => sellBusiness(stockAmount * stockCost)}>Sell @ ${stockAmount * stockCost}</button>
+          <button className='btn btn-danger' onClick={() => this.delete_business(stockAmount, stockCost, sellBusiness)}>Sell @ ${stockAmount * stockCost}</button>
         </div>
       </div>
     </div>
