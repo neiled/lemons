@@ -39,4 +39,4 @@ export default handleActions({
   SELL_BUSINESS: (state = [], action) => Object.assign({}, state, {
     plots_available: state.plots_available + 1
   })
-}, {cash: 110, max_cash: 110, plots_available: 1})
+}, {cash: 60, max_cash: 60, plots_available: 1})
