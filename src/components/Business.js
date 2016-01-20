@@ -63,7 +63,8 @@ class Business extends React.Component {
     <div className='col-xs-12 col-md-4'>
       <div className={panel_type} >
         <div className='panel-heading'>
-          <h3 className='panel-title'>{name}</h3>
+          <button className='btn btn-danger btn-sm pull-right' onClick={() => this.delete_business(stockAmount, stockCost, sellBusiness)}>Sell @ ${stockAmount * stockCost}</button>
+          <h4 className=''>{name}</h4>
         </div>
         <div className='panel-body'>
           <p>Stock Remaining: {stockAmount}</p>
@@ -76,7 +77,6 @@ class Business extends React.Component {
             <StockBuyButton amount={5} cash={cash} stockCost={stockCost} incrementStock={incrementStock} maxStock={maxStock} stockAmount={stockAmount} />
             <StockBuyButton amount={maxStock - stockAmount} cash={cash} stockCost={stockCost} incrementStock={incrementStock} maxStock={maxStock} stockAmount={stockAmount} />
           </ul>
-          <button className='btn btn-danger' onClick={() => this.delete_business(stockAmount, stockCost, sellBusiness)}>Sell @ ${stockAmount * stockCost}</button>
         </div>
       </div>
     </div>

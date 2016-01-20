@@ -12,6 +12,7 @@ export class HomeView extends React.Component {
             Lemons
             <img src='lemon.png'></img>
           </h1>
+          <small><a className='pull-right' href='https://twitter.com/neiled'>@neiled</a></small>
         </div>
         <BusinessManagerContainer />
       </div>
