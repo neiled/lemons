@@ -1,4 +1,6 @@
 import React, { PropTypes } from 'react'
+import styles from 'styles/lemons.scss'
+import classnames from 'classnames'
 
 class StockBuyButton extends React.Component {
   render () {
@@ -66,7 +68,7 @@ class Business extends React.Component {
           <button className='btn btn-danger btn-sm pull-right' onClick={() => this.delete_business(stockAmount, stockCost, sellBusiness)}>Sell @ ${stockAmount * stockCost}</button>
           <h4 className=''>{name}</h4>
         </div>
-        <div className='panel-body'>
+        <div className={classnames('panel-body', styles.fixedpanel)}>
           <p>Stock Remaining: {stockAmount}</p>
           <p>Sale Price: {sellPrice}</p>
           <p>

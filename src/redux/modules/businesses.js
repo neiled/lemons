@@ -12,6 +12,7 @@ export const SELL_BUSINESS = 'SELL_BUSINESS'
 export const STOCK_INCREMENT = 'STOCK_INCREMENT'
 export const STOCK_DECREMENT = 'STOCK_DECREMENT'
 export const SELL_STOCK = 'SELL_STOCK'
+export const BUY_PLOT = 'BUY_PLOT'
 
 // ------------------------------------
 // Actions
@@ -20,12 +21,14 @@ export const addBusiness = createAction(ADD_BUSINESS, (value = 1) => value)
 export const sellBusiness = createAction(SELL_BUSINESS, (id, sellValue) => { return {id: id, sellValue: sellValue} })
 export const incrementStock = createAction(STOCK_INCREMENT, (id, value, stock_cost) => { return {id: id, value: value, stock_cost: stock_cost} })
 export const sellStock = createAction(SELL_STOCK, (id, value, sale_price) => { return {id: id, value: value, sale_price: sale_price} })
+export const buyPlot = createAction(BUY_PLOT)
 
 export const actions = {
   addBusiness,
   incrementStock,
   sellStock,
-  sellBusiness
+  sellBusiness,
+  buyPlot
 }
 
 function increment_stock (state, action) {
