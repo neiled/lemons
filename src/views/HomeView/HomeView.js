@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import BusinessManagerContainer from 'containers/BusinessManagerContainer'
 import * as UserActions from 'redux/modules/user'
+import { Link } from 'react-router'
 
-export class HomeView extends React.Component {
+export class HomeView extends Component {
 
   render () {
     return (
@@ -13,12 +14,21 @@ export class HomeView extends React.Component {
             Lemons
             <img onClick={() => this.props.dispatch(UserActions.cashIncrease(1))} src='lemon.png'></img>
           </h1>
-          <small><a className='pull-right' href='https://twitter.com/neiled'>@neiled</a></small>
+          <div className='text-right'>
+            <ul className='list-unstyled'>
+              <li><small><a href='https://twitter.com/neiled'>@neiled</a></small></li>
+              <li><small> <Link to='/Changelog'>Changelog</Link></small></li>
+            </ul>
+          </div>
         </div>
         <BusinessManagerContainer />
       </div>
     )
   }
+}
+
+HomeView.propTypes = {
+  dispatch: PropTypes.func.isRequired
 }
 
 export default connect()(HomeView)

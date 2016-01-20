@@ -126,8 +126,8 @@ export default class BusinessManager extends Component {
 Plot.propTypes = {
   cash: PropTypes.number.isRequired,
   plotsCount: PropTypes.number.isRequired,
-  businesses: PropTypes.object.isRequired,
-  available: PropTypes.bool.isRequired,
+  businesses: PropTypes.array.isRequired,
+  available: PropTypes.bool,
   maxCash: PropTypes.number.isRequired,
   actions: PropTypes.object.isRequired
 }
