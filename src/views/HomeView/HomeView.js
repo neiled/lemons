@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import BusinessManagerContainer from 'containers/BusinessManagerContainer'
+import * as UserActions from 'redux/modules/user'
 
 export class HomeView extends React.Component {
 
@@ -10,7 +11,7 @@ export class HomeView extends React.Component {
         <div className='jumbotron'>
           <h1>
             Lemons
-            <img src='lemon.png'></img>
+            <img onClick={() => this.props.dispatch(UserActions.cashIncrease(1))} src='lemon.png'></img>
           </h1>
           <small><a className='pull-right' href='https://twitter.com/neiled'>@neiled</a></small>
         </div>

@@ -4,14 +4,17 @@ import { createAction, handleActions } from 'redux-actions'
 // Constants
 // ------------------------------------
 export const CASH_SPEND = 'CASH_SPEND'
+export const CASH_INCREASE = 'CASH_INCREASE'
 
 // ------------------------------------
 // Actions
 // ------------------------------------
 export const cashSpend = createAction(CASH_SPEND, (value) => value)
+export const cashIncrease = createAction(CASH_INCREASE)
 
 export const actions = {
-  cashSpend
+  cashSpend,
+  cashIncrease
 }
 
 // ------------------------------------
@@ -20,6 +23,9 @@ export const actions = {
 export default handleActions({
   [CASH_SPEND]: (state, { payload }) => Object.assign({}, state, {
     cash: state.cash - payload.amount
+  }),
+  [CASH_INCREASE]: (state, { payload }) => Object.assign({}, state, {
+    cash: state.cash + payload
   }),
   ADD_BUSINESS: (state = {cash: 1000}, action) => Object.assign({}, state, {
     cash: state.cash - action.payload.cost,
