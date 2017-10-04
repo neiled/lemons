@@ -21,12 +21,15 @@ Example:
 Do I want users to sell directly to other players, or put onto a market?
 Market would be putting them on at a certain price, someone can buy them
 
+Limited number of factory spots means which factories the user has needs to be determined carefully
+
 Research can find new recipes, it takes time
 Recipe's have various rarities
 
 Where is the skill?
 	
 Who is going to buy the higher level products?
+ - Guess they just get sold to the market?
 
 Is all money taken from other players? Yes
 	Every player starts with X amount of gold.
@@ -35,6 +38,12 @@ Is all money taken from other players? Yes
 What happens if you have 0 gold?
 	Manual labor allows you to generate money (i.e. clicking to build something with no costs)
 	
+User can buy/rent storage to store their goods to wait for a price change before selling them
+
+What is going to cause price flucutations?
+	- Something artificial?
+	- Some random contracts to fulfill? These would cause more of a specific product to be made/sold
+	- Contracts could be group based, lots of people making something to fulfill a contract to split the profits
 
 Example:
 Click * 10 - build a brick
@@ -45,6 +54,38 @@ With money from selling bricks, buy some iron ore
 Use iron ore and furnace to build iron
 Use bricks and iron to build an iron miner
 Can now click * 10 to build iron ore
+	- How does the first person buy iron ore?
+
+Perhaps market is simplified and price increases/decreases based on the supply and demand?
 
 
+-------------------
 
+Homepage
+	-Create Account Link
+	-Login Link
+
+
+Create Account
+	username/email/password
+	create account in database
+	Log in user automatically -> JWT
+
+Login
+	email/password
+	create session in database? -> JWT
+	User starts with $100
+
+Logout
+
+User Homepage
+	- Manual Build Something (Click to start building)
+	- Show stored items
+	- Sell Item
+	- Buy Item
+	- Show money
+	- Build a factory location
+	- Build a factory
+	- Research a recipe
+
+See the leaderboard
